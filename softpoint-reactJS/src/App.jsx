@@ -2,13 +2,18 @@ import { useState, useEffect, useContext } from 'react';
 import countries from './JSON/countries.json';
 import Dropdown from './components/Dropdown';
 import CountryContext from './context/CountryContext';
+import {modifyCountryMaskData} from './utils/modifyCountryMaskData'
+import {getMasks} from './utils/getMasks'
 
 
 function App() {
-  const {country, setCountry} = useContext(CountryContext);
-  const {isDropVis, setIsDropVis} = useContext(CountryContext);
-  
+  // Data for phone masks - not given in the question.
+  const countriesMasks = modifyCountryMaskData();
+  // Data from the question
   const countryList = countries;
+
+  const {country, isDropVis, setIsDropVis} = useContext(CountryContext);
+
   const getFlagEmoji = countryCode=>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt(0)))
 
   return (
@@ -21,7 +26,7 @@ function App() {
             <button onClick={()=>setIsDropVis(!isDropVis)}> 
               {getFlagEmoji(country.toLowerCase())} &nbsp; {countryList[country]["calling_code"]}
             </button>
-            <input className="px-2" type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="(000)000-0000" required />
+            <input className="mx-3" type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder={getMasks(countriesMasks, country)} required />
           </div>
           
           <div>
