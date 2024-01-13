@@ -1,25 +1,10 @@
 import React from 'react'
 import DropRow from './DropRow';
+import { filterFunction } from '../utils/filterFunction';
+filterFunction
 
 function Dropdown({countryList, isDropVis}) {
-    const getFlagEmoji = countryCode=>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt(0)))
-
-    const filterFunction = () => {
-        var input, filter, ul, li, a, i, div, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        div = document.getElementById("myDropdown");
-        a = div.getElementsByTagName("a");
-        for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-            } else {
-                a[i].style.display = "none";
-            }
-        }
-    }
-
+    
     return (
         <div className={` roun bg-orange-300 h-60 w-60 -mx-28 absolute top-72 left-1/2 dropdown ${isDropVis ? "visible" : "invisible"}`}>
             <form className = "h-full" action="#">
