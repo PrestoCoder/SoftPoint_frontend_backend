@@ -8,7 +8,7 @@ class RealEstateShowTest extends TestCase
 {
     public function testShow()
     {
-        $realEstate = RealEstate::factory()->create();
+        $realEstate = RealEstate::first();
 
         $response = $this->get('/api/real-estates/' . $realEstate->id);
 

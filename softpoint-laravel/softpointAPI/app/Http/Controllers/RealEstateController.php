@@ -51,7 +51,7 @@ class RealEstateController extends Controller
             'real_state_type' => 'required|in:house,department,land,commercial_ground',
             'street' => 'required|string|max:128',
             'external_number' => 'required|string|max:12',
-            // 'internal_number' => 'nullable|string',
+            'internal_number' => 'nullable|string',
             'neighborhood' => 'required|string|max:128',
             'city' => 'required|string|max:64',
             'country' => 'required|string|size:2',
