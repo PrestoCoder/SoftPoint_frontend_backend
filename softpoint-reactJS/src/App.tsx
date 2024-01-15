@@ -1,26 +1,40 @@
 import { useState, useContext } from 'react';
 import countries from './JSON/countries.json';
 import Dropdown from './components/Dropdown';
-import CountryContext from './context/CountryContext';
+import { CountryContext, CountryContextType } from "./context/CountryContext";
 import { modifyCountryMaskData } from './utils/modifyCountryMaskData';
 import { getMasks } from './utils/getMasks';
 import { formatNumber } from './utils/formatNumber';
 import { getFlagEmoji } from './utils/getFlagEmoji';
 
+// Define the default values for the context
+const defaultContext: CountryContextType = {
+  country: '',
+  isDropVis: false,
+  setIsDropVis: () => {},
+  setCountry: () => {},  // Add default value for setCountry
+};
+
 function App() {
+  // Use the default values if the context value is undefined
+  const { country, isDropVis, setIsDropVis, setCountry }: CountryContextType = useContext(CountryContext) || defaultContext;
+
+  // Required for accurate update of the masks.
+  const countriesMasks = modifyCountryMaskData();
+  const countryList: Record<string, { name: string; calling_code: string }> = countries;
+
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
     const phoneMask = getMasks(countriesMasks, country);
     setPhoneNumber(formatNumber(phoneMask, input));
   };
 
-  const { country, isDropVis, setIsDropVis } = useContext(CountryContext);
+  // console.log('Country:', country);
+  // console.log('Country List:', countryList);
 
-  // Required for accurate update of the masks.
-  const countriesMasks = modifyCountryMaskData();
-  const countryList = countries;
+  // console.log('Flag Emoji:', getFlagEmoji(country.toLowerCase()));
 
   return (
     <div className="w-1/2 h-full bg-stone-300 mx-auto">
@@ -29,9 +43,9 @@ function App() {
         <Dropdown countryList={countryList} isDropVis={isDropVis} />
 
         <div className='flex justify-around w-2/4'>
-          <button onClick={() => setIsDropVis(!isDropVis)}>
-            {getFlagEmoji(country.toLowerCase())} &nbsp; {countryList[country]["calling_code"]}
-          </button>
+        <button onClick={() => setIsDropVis(!isDropVis)}>
+          {getFlagEmoji(country.toLowerCase())} &nbsp; {countryList[country]?.calling_code}
+        </button>
           <input
             value={phoneNumber}
             onChange={handleChange}
