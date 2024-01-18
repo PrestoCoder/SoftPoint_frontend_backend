@@ -34,22 +34,29 @@ The project consists of two main components:
 
 The following states are maintained:
 
-1. **Current Country Selected**: Determines the phone mask and country code.
-2. **Visibility Flag for Dropdown Menu**: Controls the visibility of the dropdown menu.
+- **Current Country Selected**: Determines the phone mask and country code. The current country is crucial as it influences both the phone mask and the displayed country code.
+
+- **Visibility Flag for Dropdown Menu**: Controls the visibility of the dropdown menu. The visibility flag is essential because the component responsible for its visibility is called in the App component. However, its visibility is determined from within the DropRow.tsx component. When a user clicks on a row, it triggers the menu to disappear. Changing the visibility flag prompts the menu component to re-render, which is inside the App.tsx component.
+
+- **State for Phone Number**: As mentioned in the Bonus section, a state for the phone number is also required. This state is crucial for real-time formatting, as whenever the number changes, it triggers a re-render of the component with the formatted number.
 
 ## 🌟 Context API
 
-Context API is employed to make the states and setState handlers available to both **DropRow.tsx** and **App.tsx** without redundancy.
+As mentioned above, both the states are used in App.jsx, but their values are determined when a row is clicked. This implies that these states are not directly useful for the Dropdown.tsx component. Passing them to DropRow.tsx through Dropdown.tsx would be redundant.
+
+Therefore, the solution involves using Context API to make the states and setState handlers available to both **DropRow.tsx** and **App.tsx** without redundancy. By employing Context API, these shared states and their corresponding setState handlers can be accessed by the DropRow.tsx and App.tsx components, eliminating the need for passing them through intermediary components.
+
 
 ## 🚀 Bonus Feature
 
 The project includes a bonus feature:
 
-- **Auto Formatting of Phone Number**: Implemented using a function (`formatNumber`) inside the `Utils` folder. It reads the entered number and formats it according to the selected country's phone mask.
+- **Auto Formatting of Phone Number**: This part required to auto format the number entered according to the mask for the phone number of that country. Inside the Utils folder, I created a function formatNumber, that would read the number entered, and format it according to the mask.
+For this, we require a state for current phone number inside the App component, because we want that whenever the number changes, we read it, and re-render the component with the formatted number.
 
 ## 📦 Distributable File Size
 
-The distributable file, located in the root directory, is approximately 200-300KB, meeting the specified requirements.
+The distributable file **dist**, located in the root directory, is approximately 200-300KB, meeting the specified requirements.
 
 ## 🔧 Tech Stack
 
