@@ -20,18 +20,20 @@ This React TypeScript project, created using **Vite** and styled with **Tailwind
 ## 🌐 Data Used
 
 The project utilizes two JSON files for data:
-1. Given JSON file for country information.
-2. Additional JSON file for exact phone masks corresponding to each country.
+1. **Given JSON File**: Contains country information.
+2. **Additional JSON File**: Provides exact phone masks for each country.
 
 ## 🚀 Components
 
 The project consists of two main components:
+
 1. **Dropdown.tsx**: This component handles the country selection dropdown. The code is separated to avoid clutter in the main App.tsx file.
 2. **DropRow.tsx**: A row component within the dropdown menu, used for each country. Separated as a component due to repeating code and improved readability.
 
 ## 🎨 States
 
 The following states are maintained:
+
 1. **Current Country Selected**: Determines the phone mask and country code.
 2. **Visibility Flag for Dropdown Menu**: Controls the visibility of the dropdown menu.
 
@@ -42,6 +44,7 @@ Context API is employed to make the states and setState handlers available to bo
 ## 🚀 Bonus Feature
 
 The project includes a bonus feature:
+
 - **Auto Formatting of Phone Number**: Implemented using a function (`formatNumber`) inside the `Utils` folder. It reads the entered number and formats it according to the selected country's phone mask.
 
 ## 📦 Distributable File Size
@@ -62,6 +65,7 @@ The distributable file, located in the root directory, is approximately 200-300K
 ## 🌈 Installation
 
 For a fresh installation:
+
 1. Set up a new React TypeScript project with Vite.
 2. Copy the contents of this project, ensuring to maintain the directory structure.
 3. Install dependencies: `npm install`
@@ -76,6 +80,6 @@ We appreciate your feedback! Let us know how you liked the project and if there'
 
 ## 📬 Contact
 
-For inquiries, contact [Rohan Chhibba] at [rchhibba@asu.edu].
+For inquiries, contact [Your Name] at [Your Email Address].
 
 Enjoy using the Country Selector with Phone Mask! 🚀
