@@ -10,7 +10,6 @@ This project is a RESTful API built with Laravel for managing Real Estate proper
 - [Usage](#usage)
 - [Database Seeding](#database-seeding)
 - [Installation](#installation)
-- [Optional Front-end](#optional-front-end)
 - [Contributing](#contributing)
 - [Feedback](#feedback)
 - [Contact](#contact)
@@ -25,17 +24,14 @@ This project is a RESTful API built with Laravel for managing Real Estate proper
 
 ## Test Requirements
 
-- Write at least one feature test for each controller operation
-- Display specific attributes for list and show operations
-- Display newly updated record for update operation
-- Display recently removed record for destroy operation
+- One feature test for each controller operation
+- Displayed specific attributes for list and show operations
+- Displayed newly updated record for update operation
+- Displayed recently removed record for destroy operation
 
 ## Specifications
 
-- Laravel version: [Specify the Laravel version used]
 - Database: MySQL
-- Git Commit: Commit the code correctly, avoid squashing commits
-- Optional: Front-end using a JavaScript framework (e.g., React)
 
 ## Usage
 
@@ -45,8 +41,7 @@ This project is a RESTful API built with Laravel for managing Real Estate proper
 4. Run the server: `php artisan serve`
 
 ## Database Seeding
+![Seeded values in red box](https://github.com/PrestoCoder/SoftPoint_frontend_backend/blob/main/softpoint-laravel/Seed_values_in_dBeaver.png
+)
 
-To populate the database with sample data, run:
 
-```bash
-php artisan db:seed
