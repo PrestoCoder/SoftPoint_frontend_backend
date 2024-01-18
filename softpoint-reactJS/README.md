@@ -1,5 +1,7 @@
 # 🌍 React Country Selector with Phone Mask
 
+Link to deployed application - **https://prestocoder.github.io/sofpoint_frontend_challenge/**
+
 This React TypeScript project, created using **Vite** and styled with **Tailwind CSS**, empowers users to choose their country, determining the country code and phone mask accordingly.
 
 ## Table of Contents
